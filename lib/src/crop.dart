@@ -392,6 +392,7 @@ class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
           _area = widget.initialParam!.area;
           _scale = widget.initialParam!.scale;
           _ratio = widget.initialParam!.ratio;
+          _onLoading(true);
           return;
         }
 
@@ -401,20 +402,7 @@ class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
           boundaries.height / image.height,
         );
 
-        final viewWidth = boundaries.width / (image.width * _scale * _ratio);
-        final viewHeight = boundaries.height / (image.height * _scale * _ratio);
-        _area = _calculateDefaultArea(
-          viewWidth: viewWidth,
-          viewHeight: viewHeight,
-          imageWidth: image.width,
-          imageHeight: image.height,
-        );
-        _view = Rect.fromLTWH(
-          (viewWidth - 1.0) / 2,
-          (viewHeight - 1.0) / 2,
-          viewWidth,
-          viewHeight,
-        );
+        _updateView(boundaries);
         _onLoading(true);
       });
     });
@@ -446,6 +434,9 @@ class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
         viewWidth,
         viewHeight,
       );
+      // disable initial magnification
+      _scale = _minimumScale ?? 1.0;
+      _view = _getViewInBoundaries(_scale);
     });
   }
 
