@@ -16,6 +16,19 @@ enum _CropAction { none, moving, cropping, scaling }
 
 enum _CropHandleSide { none, topLeft, topRight, bottomLeft, bottomRight }
 
+/// Model containing all the internal parameters of the [Crop] widget
+class CropInternal {
+  final Rect view, area;
+  final double ratio, scale;
+
+  const CropInternal({
+    required this.view,
+    required this.area,
+    required this.ratio,
+    required this.scale,
+  });
+}
+
 class Crop extends StatefulWidget {
   final ImageProvider image;
   final double? aspectRatio;
@@ -34,6 +47,9 @@ class Crop extends StatefulWidget {
   /// Function called when the image or the view is recomputed
   final Function(bool isReady)? onLoading;
 
+  /// To initialize the crop view with data programmatically
+  final CropInternal? initialParam;
+
   const Crop({
     Key? key,
     required this.image,
@@ -44,6 +60,7 @@ class Crop extends StatefulWidget {
     this.backgroundColor = _kCropBackgroundColor,
     this.placeholderWidget,
     this.onLoading,
+    this.initialParam,
   }) : super(key: key);
 
   Crop.file(
@@ -57,6 +74,7 @@ class Crop extends StatefulWidget {
     this.backgroundColor = _kCropBackgroundColor,
     this.placeholderWidget,
     this.onLoading,
+    this.initialParam,
   })  : image = FileImage(file, scale: scale),
         super(key: key);
 
@@ -72,6 +90,7 @@ class Crop extends StatefulWidget {
     this.backgroundColor = _kCropBackgroundColor,
     this.placeholderWidget,
     this.onLoading,
+    this.initialParam,
   })  : image = AssetImage(assetName, bundle: bundle, package: package),
         super(key: key);
 
@@ -125,6 +144,11 @@ class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
 
   // Counting pointers(number of user fingers on screen)
   int pointers = 0;
+
+  /// Returns the internal parameters of the state
+  /// can be provided using [initialParam] to initialize the view to the same state
+  CropInternal get internalParameters =>
+      CropInternal(view: _view, area: _area, scale: _scale, ratio: _ratio);
 
   @override
   void initState() {
@@ -337,6 +361,16 @@ class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
 
       setState(() {
         _imageInfo = imageInfo;
+
+        // initialize internal parameters if exists
+        if (widget.initialParam != null) {
+          _view = widget.initialParam!.view;
+          _area = widget.initialParam!.area;
+          _scale = widget.initialParam!.scale;
+          _ratio = widget.initialParam!.ratio;
+          return;
+        }
+
         _scale = imageInfo.scale;
         _ratio = max(
           boundaries.width / image.width,
