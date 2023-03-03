@@ -1,11 +1,14 @@
+# Image crop for insta_assets_picker package
+
+[![image_crop](https://img.shields.io/pub/v/image_crop?label=image_crop)](https://pub.dev/packages/image_crop)
+[![insta_assets_picker](https://img.shields.io/pub/v/insta_assets_picker?label=insta_assets_picker)](https://pub.dev/packages/insta_assets_picker)
+
 > **Warning**
 > This repository is a fork from [image_crop](https://github.com/lykhonis/image_crop) and was modified to work with [insta_assets_picker](https://pub.dev/packages/insta_assets_picker) package.
 > This means that this repository will only be updated for the means of this package.
 > I don't recommend using it in your project as it probably won't be updated except for the insta_assets_picker requirement.
 
-# Image crop for insta_assets_picker package
-
-[![Pub](https://img.shields.io/pub/v/insta_assets_picker.svg)](https://pub.dev/packages/insta_assets_picker)
+## Changes
 
 Contains all the changes needed in order to work with the `insta_assets_picker` library :
 
@@ -20,4 +23,5 @@ Contains all the changes needed in order to work with the `insta_assets_picker` 
 
 ## Note
 
-If the [original package](https://github.com/lykhonis/image_crop) happen to be updated, this could be deleted.
+Thanks to [lykhonis](https://github.com/lykhonis) who developed [image_crop](https://pub.dev/packages/image_crop).
+If the original package happen to be updated, this could be deleted.
