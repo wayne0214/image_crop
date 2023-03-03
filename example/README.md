@@ -1,6 +1,6 @@
-# image_crop_example
+# insta_assets_crop_example
 
-Demonstrates how to use the image_crop plugin.
+Demonstrates how to use the insta_assets_crop plugin.
 
 ## Getting Started
 

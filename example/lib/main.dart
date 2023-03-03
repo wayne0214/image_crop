@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:image_crop/image_crop.dart';
+import 'package:insta_assets_crop/insta_assets_crop.dart';
 import 'package:image_picker/image_picker.dart';
 
 void main() {
@@ -95,9 +95,10 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> _openImage() async {
-    final pickedFile = await ImagePicker().getImage(source: ImageSource.gallery);
+    final pickedFile =
+        await ImagePicker().getImage(source: ImageSource.gallery);
     final file = File(pickedFile.path);
-    final sample = await ImageCrop.sampleImage(
+    final sample = await InstaAssetsCrop.sampleImage(
       file: file,
       preferredSize: context.size.longestSide.ceil(),
     );
@@ -121,12 +122,12 @@ class _MyAppState extends State<MyApp> {
 
     // scale up to use maximum possible number of pixels
     // this will sample image in higher resolution to make cropped image larger
-    final sample = await ImageCrop.sampleImage(
+    final sample = await InstaAssetsCrop.sampleImage(
       file: _file,
       preferredSize: (2000 / scale).round(),
     );
 
-    final file = await ImageCrop.cropImage(
+    final file = await InstaAssetsCrop.cropImage(
       file: sample,
       area: area,
     );

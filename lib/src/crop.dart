@@ -1,4 +1,4 @@
-part of image_crop;
+part of insta_assets_crop;
 
 const _kCropGridColumnCount = 3;
 const _kCropGridRowCount = 3;

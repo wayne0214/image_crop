@@ -1,4 +1,4 @@
-library image_crop;
+library insta_assets_crop;
 
 import 'dart:async';
 import 'dart:io';
@@ -9,5 +9,5 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-part 'src/image_crop.dart';
+part 'src/insta_assets_crop.dart';
 part 'src/crop.dart';

@@ -1,4 +1,4 @@
-package com.lykhonis.imagecrop;
+package fr.legoffmael.imagecrop;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
@@ -103,7 +103,7 @@ public final class ImageCropPlugin implements FlutterPlugin , ActivityAware, Met
     }
   
     private void setup(BinaryMessenger messenger) {
-        channel = new MethodChannel(messenger, "plugins.lykhonis.com/image_crop");
+        channel = new MethodChannel(messenger, "plugins.legoffmael.fr/insta_assets_crop");
         channel.setMethodCallHandler(this);
     }
 
@@ -393,7 +393,7 @@ public final class ImageCropPlugin implements FlutterPlugin , ActivityAware, Met
 
     private File createTemporaryImageFile() throws IOException {
         File directory = activity.getCacheDir();
-        String name = "image_crop_" + UUID.randomUUID().toString();
+        String name = "insta_assets_crop_" + UUID.randomUUID().toString();
         return File.createTempFile(name, ".jpg", directory);
     }
 

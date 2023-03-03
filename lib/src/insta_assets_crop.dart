@@ -1,4 +1,4 @@
-part of image_crop;
+part of insta_assets_crop;
 
 class ImageOptions {
   final int width;
@@ -20,9 +20,9 @@ class ImageOptions {
   String toString() => '$runtimeType(width: $width, height: $height)';
 }
 
-class ImageCrop {
+class InstaAssetsCrop {
   static const _channel =
-      const MethodChannel('plugins.lykhonis.com/image_crop');
+      const MethodChannel('plugins.legoffmael.fr/insta_assets_crop');
 
   static Future<bool> requestPermissions() => _channel
       .invokeMethod('requestPermissions')
