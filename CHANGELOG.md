@@ -1,3 +1,7 @@
+### 0.0.2
+
+- [#104](https://github.com/lykhonis/image_crop/pull/104): add to support to Flutter 3.10.x
+
 ## 0.0.1
 
 - [#75](https://github.com/lykhonis/image_crop/pull/75): fix sample image on android
