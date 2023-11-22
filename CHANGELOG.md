@@ -1,4 +1,4 @@
-### 0.0.2
+## 0.0.2
 
 - [#104](https://github.com/lykhonis/image_crop/pull/104): add to support to Flutter 3.10.x
 
