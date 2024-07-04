@@ -1,4 +1,4 @@
-package fr.legoffmael.imagecrop;
+package dev.legoffmael.imagecrop;
 
 import android.app.Activity;
 import android.content.pm.PackageManager;
@@ -103,7 +103,7 @@ public final class ImageCropPlugin implements FlutterPlugin , ActivityAware, Met
     }
   
     private void setup(BinaryMessenger messenger) {
-        channel = new MethodChannel(messenger, "plugins.legoffmael.fr/insta_assets_crop");
+        channel = new MethodChannel(messenger, "plugins.legoffmael.dev/insta_assets_crop");
         channel.setMethodCallHandler(this);
     }
 

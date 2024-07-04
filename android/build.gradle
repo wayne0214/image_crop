@@ -1,4 +1,4 @@
-group 'fr.legoffmael.imagecrop'
+group 'dev.legoffmael.imagecrop'
 version '1.0-SNAPSHOT'
 
 buildscript {

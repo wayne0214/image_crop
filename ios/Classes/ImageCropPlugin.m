@@ -7,7 +7,7 @@
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   FlutterMethodChannel* channel = [FlutterMethodChannel
-                                   methodChannelWithName:@"plugins.legoffmael.fr/insta_assets_crop"
+                                   methodChannelWithName:@"plugins.legoffmael.dev/insta_assets_crop"
                                    binaryMessenger:[registrar messenger]];
   ImageCropPlugin* instance = [ImageCropPlugin new];
   [registrar addMethodCallDelegate:instance channel:channel];

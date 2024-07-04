@@ -22,7 +22,7 @@ class ImageOptions {
 
 class InstaAssetsCrop {
   static const _channel =
-      const MethodChannel('plugins.legoffmael.fr/insta_assets_crop');
+      const MethodChannel('plugins.legoffmael.dev/insta_assets_crop');
 
   static Future<bool> requestPermissions() => _channel
       .invokeMethod('requestPermissions')

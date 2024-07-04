@@ -1,4 +1,4 @@
-package fr.legoffmael.imagecropexample;
+package dev.legoffmael.imagecropexample;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
