@@ -24,9 +24,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final cropKey = GlobalKey<CropState>();
-  File _file;
-  File _sample;
-  File _lastCropped;
+  File? _file;
+  File? _sample;
+  File? _lastCropped;
 
   @override
   void dispose() {
@@ -57,9 +57,10 @@ class _MyAppState extends State<MyApp> {
   Widget _buildCroppingImage() {
     return Column(
       children: <Widget>[
-        Expanded(
-          child: Crop.file(_sample, key: cropKey),
-        ),
+        if (_sample != null)
+          Expanded(
+            child: Crop.file(_sample!, key: cropKey),
+          ),
         Container(
           padding: const EdgeInsets.only(top: 20.0),
           alignment: AlignmentDirectional.center,
@@ -71,8 +72,8 @@ class _MyAppState extends State<MyApp> {
                   'Crop Image',
                   style: Theme.of(context)
                       .textTheme
-                      .button
-                      .copyWith(color: Colors.white),
+                      .labelLarge
+                      ?.copyWith(color: Colors.white),
                 ),
                 onPressed: () => _cropImage(),
               ),
@@ -88,7 +89,10 @@ class _MyAppState extends State<MyApp> {
     return TextButton(
       child: Text(
         'Open Image',
-        style: Theme.of(context).textTheme.button.copyWith(color: Colors.white),
+        style: Theme.of(context)
+            .textTheme
+            .labelLarge
+            ?.copyWith(color: Colors.white),
       ),
       onPressed: () => _openImage(),
     );
@@ -96,11 +100,14 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> _openImage() async {
     final pickedFile =
-        await ImagePicker().getImage(source: ImageSource.gallery);
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (pickedFile == null) return;
+
     final file = File(pickedFile.path);
     final sample = await InstaAssetsCrop.sampleImage(
       file: file,
-      preferredSize: context.size.longestSide.ceil(),
+      preferredSize: context.size?.longestSide.ceil(),
     );
 
     _sample?.delete();
@@ -113,18 +120,22 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> _cropImage() async {
-    final scale = cropKey.currentState.scale;
-    final area = cropKey.currentState.area;
+    final scale = cropKey.currentState?.scale;
+    final area = cropKey.currentState?.area;
     if (area == null) {
       // cannot crop, widget is not setup
       return;
     }
 
+    if (_file == null) {
+      throw 'error file is null';
+    }
+
     // scale up to use maximum possible number of pixels
     // this will sample image in higher resolution to make cropped image larger
     final sample = await InstaAssetsCrop.sampleImage(
-      file: _file,
-      preferredSize: (2000 / scale).round(),
+      file: _file!,
+      preferredSize: (2000 / (scale ?? 1.0)).round(),
     );
 
     final file = await InstaAssetsCrop.cropImage(

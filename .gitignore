@@ -12,3 +12,5 @@ build/
 
 example/.flutter-plugins-dependencies
 example/ios/Flutter/flutter_export_environment.sh
+
+.fvm
