@@ -1,4 +1,4 @@
-## 0.1.0-dev.1
+## 0.1.0-dev.2
 
 - Replaced `ImageProvider` with `child` & `size` parameter [fork#3](https://github.com/LeGoffMael/image_crop/pull/3)
 - Allow any widget to be shown in the crop view
