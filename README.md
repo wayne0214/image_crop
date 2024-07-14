@@ -21,6 +21,8 @@ Contains all the changes needed in order to work with the `insta_assets_picker` 
 - [#104](https://github.com/lykhonis/image_crop/pull/104): add to support to Flutter 3.10.x
 - [f34bfef](https://github.com/LeGoffMael/image_crop/commit/f34bfef5eaf7aef298c475fd1a1874adaa6bcad3): fix issue on aspect ratio change, no PR made because it might not be the best fix
 - [8fb0bc0](https://github.com/LeGoffMael/image_crop/commit/8fb0bc04696f95055be5f3dc32cbb8714b278a9c): fix issue with GIF, no PR for this yet since it is specific to GIF extended image provider
+- [c60f3a1](https://github.com/LeGoffMael/image_crop/commit/c60f3a1c6944725cb7cd07c901a44fd7f3b43653): fix compatibility with AGP 8.0
+- [#3](https://github.com/LeGoffMael/image_crop/pull/3): replace `image` with `child` & `size` parameters. Allow any widget to be shown in the crop view.
 
 ## Note
 
