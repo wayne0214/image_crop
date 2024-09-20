@@ -26,7 +26,7 @@ android {
         namespace "dev.legoffmael.imagecrop"
     }
 
-    compileSdk 28
+    compileSdk 31
 
     defaultConfig {
         minSdkVersion 16
