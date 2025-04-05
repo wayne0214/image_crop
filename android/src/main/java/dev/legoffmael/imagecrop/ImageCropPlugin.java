@@ -57,15 +57,6 @@ public final class ImageCropPlugin implements FlutterPlugin , ActivityAware, Met
 
     public ImageCropPlugin(){ }
 
-    /**
-     * legacy APIs
-     */
-    public static void registerWith(Registrar registrar) {
-        ImageCropPlugin instance = new ImageCropPlugin(registrar.activity());
-        instance.setup(registrar.messenger());
-        registrar.addRequestPermissionsResultListener(instance);
-    }
-
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
       this.setup(binding.getBinaryMessenger());
